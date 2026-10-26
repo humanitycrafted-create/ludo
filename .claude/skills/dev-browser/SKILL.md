@@ -9,6 +9,18 @@ A CLI for controlling browsers with sandboxed JavaScript scripts.
 
 ## Installation
 
+In a Claude Code cloud session, run this first (idempotent, ~30 s the first time):
+
+```bash
+CLAUDE_CODE_REMOTE=true bash "$CLAUDE_PROJECT_DIR/.claude/hooks/setup-dev-browser.sh"
+```
+
+It installs `dev-browser` and starts the preinstalled Chromium on port 9222. Then always use
+`dev-browser --connect http://localhost:9222` (`--headless` tries to download a browser, which the network blocks).
+`page.screenshot()` only accepts relative paths; files land in `~/.dev-browser/tmp/`.
+
+Elsewhere (local machine):
+
 ```bash
 npm install -g dev-browser
 dev-browser install
